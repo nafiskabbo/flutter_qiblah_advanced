@@ -1,13 +1,23 @@
-## 3.1.2
-* Remove 'Registrar' for flutter 3.29.0 support
+## 3.2.1
 * updated dependencies
 * Optimize location tracking in Flutter Qiblah for improved battery efficiency by https://github.com/Faizan-26 [parent library]
-
-## 3.1.0
-* updated dependencies
 * updated `flutter_compass_v2` version
 * added 'accuracy' value
 * updated android implementation
+
+## 3.2.0
+
+* updated `geolocator` version
+
+## 3.1.0+1
+
+* updated `geolocator` version
+* update min SDK requirements
+* remove deprecated android methods
+
+## 3.0.4
+
+* updated `geolocator` version
 
 ## 3.0.3
 

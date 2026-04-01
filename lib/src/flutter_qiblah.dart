@@ -13,6 +13,10 @@ import 'package:stream_transform/stream_transform.dart' show CombineLatest;
 /// Get Qiblah direction
 class FlutterQiblah {
   static const MethodChannel _channel = const MethodChannel('ml.medyas.flutter_qiblah');
+  static const LocationSettings _locationSettings = LocationSettings(
+    accuracy: LocationAccuracy.low,
+    distanceFilter: 25,
+  );
 
   static final FlutterQiblah _instance = FlutterQiblah._();
 
@@ -48,14 +52,7 @@ class FlutterQiblah {
     if (_instance._qiblahStream == null) {
       _instance._qiblahStream = _merge<CompassEvent, Position>(
         FlutterCompass.events!,
-        Geolocator.getPositionStream().transform(
-          StreamTransformer<Position, Position>.fromHandlers(
-            handleData: (Position position, EventSink<Position> sink) {
-              sink.add(position);
-              sink.close();
-            },
-          ),
-        ),
+        _optimizedPositionStream(),
       );
     }
 
@@ -88,6 +85,26 @@ class FlutterQiblah {
           return QiblahDirection(qiblah, event.heading ?? 0.0, offSet, event.accuracy);
         },
       );
+
+  /// Get current location first, then keep listening to less frequent updates.
+  static Stream<Position> _optimizedPositionStream() async* {
+    final initialPosition = await Geolocator.getCurrentPosition(
+      locationSettings: _locationSettings,
+    );
+    yield initialPosition;
+
+    Position? previous;
+    await for (final position in Geolocator.getPositionStream(
+      locationSettings: _locationSettings,
+    )) {
+      if (previous == null ||
+          previous!.latitude != position.latitude ||
+          previous!.longitude != position.longitude) {
+        previous = position;
+        yield position;
+      }
+    }
+  }
 
   /// Close compass stream, and set Qiblah stream to null
   void dispose() {

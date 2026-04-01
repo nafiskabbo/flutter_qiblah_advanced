@@ -1,3 +1,10 @@
+## 3.2.1
+* updated dependencies
+* Optimize location tracking in Flutter Qiblah for improved battery efficiency by https://github.com/Faizan-26 [parent library]
+* updated `flutter_compass_v2` version
+* added 'accuracy' value
+* updated android implementation
+
 ## 3.2.0
 
 * updated `geolocator` version

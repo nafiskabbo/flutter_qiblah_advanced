@@ -3,7 +3,7 @@ description: Demonstrates how to use the flutter_qiblah plugin.
 publish_to: "https://pub.dev/packages/flutter_qiblah"
 
 environment:
-  sdk: ">=2.15.0 <3.0.0"
+  sdk: ">=2.15.0 <4.0.0"
 
 dependencies:
   flutter:

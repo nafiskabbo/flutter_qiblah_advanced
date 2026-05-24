@@ -1,3 +1,13 @@
+## 4.0.0
+
+- **Package renamed** to [`flutter_qiblah_advanced`](https://pub.dev/packages/flutter_qiblah_advanced) for independent publication on pub.dev
+- **Fork lineage:** community-maintained continuation of [medyas/flutter_qiblah](https://github.com/medyas/flutter_qiblah)
+- **Maintainer:** [Nafis Kabbo](mailto:nafiskabbo30@gmail.com)
+- **Breaking:** depends on [`flutter_device_compass`](https://pub.dev/packages/flutter_device_compass) instead of `flutter_compass` / `flutter_compass_v2`
+- Migrates Android build to Kotlin DSL with built-in Kotlin support (Flutter 3.44+ and pre-3.44 / AGP 8–9 compatible)
+- Adds iOS Swift Package Manager (SPM) support alongside CocoaPods
+- Updates iOS deployment target to 13.0
+
 ## 3.2.1
 * updated dependencies
 * Optimize location tracking in Flutter Qiblah for improved battery efficiency by https://github.com/Faizan-26 [parent library]

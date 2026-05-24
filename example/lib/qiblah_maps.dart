@@ -1,16 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_qiblah/flutter_qiblah.dart';
-import 'package:flutter_qiblah_example/loading_indicator.dart';
-import 'package:flutter_qiblah_example/location_error_widget.dart';
+import 'package:flutter_qiblah_advanced/flutter_qiblah_advanced.dart';
+import 'package:flutter_qiblah_advanced_example/loading_indicator.dart';
+import 'package:flutter_qiblah_advanced_example/location_error_widget.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class QiblahMaps extends StatefulWidget {
   static final meccaLatLong = const LatLng(21.422487, 39.826206);
   static final meccaMarker = Marker(
-    markerId: MarkerId("mecca"),
+    markerId: MarkerId('mecca'),
     position: meccaLatLong,
     icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
     draggable: false,
@@ -39,19 +39,22 @@ class _QiblahMapsState extends State<QiblahMaps> {
       child: FutureBuilder(
         future: _future,
         builder: (_, AsyncSnapshot<Position?> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting)
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return LoadingIndicator();
-          if (snapshot.hasError)
+          }
+          if (snapshot.hasError) {
             return LocationErrorWidget(
               error: snapshot.error.toString(),
             );
+          }
 
           if (snapshot.data != null) {
             final loc =
                 LatLng(snapshot.data!.latitude, snapshot.data!.longitude);
             position = loc;
-          } else
+          } else {
             _positionStream.sink.add(position);
+          }
 
           return StreamBuilder(
             stream: _positionStream.stream,
@@ -85,7 +88,7 @@ class _QiblahMapsState extends State<QiblahMaps> {
               circles: Set<Circle>.of(
                 [
                   Circle(
-                    circleId: CircleId("Circle"),
+                    circleId: CircleId('Circle'),
                     radius: 10,
                     center: position,
                     fillColor:
@@ -94,19 +97,19 @@ class _QiblahMapsState extends State<QiblahMaps> {
                     strokeColor:
                         Theme.of(context).primaryColorDark.withAlpha(100),
                     zIndex: 3,
-                  )
+                  ),
                 ],
               ),
               polylines: Set<Polyline>.of(
                 [
                   Polyline(
-                    polylineId: PolylineId("Line"),
+                    polylineId: PolylineId('Line'),
                     points: [position, QiblahMaps.meccaLatLong],
                     color: Theme.of(context).primaryColor,
                     width: 5,
                     zIndex: 4,
                     geodesic: true,
-                  )
+                  ),
                 ],
               ),
               onMapCreated: (GoogleMapController controller) {

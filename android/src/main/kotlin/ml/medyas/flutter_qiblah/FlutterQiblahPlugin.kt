@@ -11,7 +11,7 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
 /** FlutterQiblahPlugin */
-class FlutterQiblahPlugin : FlutterPlugin, MethodCallHandler {
+class FlutterQiblahPlugin() : FlutterPlugin, MethodCallHandler {
     private var context: Context? = null
 
     constructor(context: Context) : this() {

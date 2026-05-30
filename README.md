@@ -12,7 +12,7 @@ Add `flutter_qiblah_advanced` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_qiblah_advanced: ^4.0.0
+  flutter_qiblah_advanced: ^4.0.1
 ```
 
 > The package does not work on the iOS Simulator. To test on iOS, use a real device. See [medyas/flutter_qiblah#39](https://github.com/medyas/flutter_qiblah/issues/39).

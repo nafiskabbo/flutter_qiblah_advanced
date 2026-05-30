@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_qiblah_advanced'
-  s.version          = '4.0.0'
+  s.version          = '4.0.1'
   s.summary          = 'Flutter Qiblah direction with compass and location support.'
   s.description      = <<-DESC
 Flutter Qiblah direction using device compass and location, with support for Android and iOS.

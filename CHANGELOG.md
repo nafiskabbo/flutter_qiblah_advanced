@@ -1,3 +1,7 @@
+## 4.0.1
+
+- Fix Android Kotlin compile error (`No value passed for parameter 'context'`) on Kotlin 2.x by restoring the explicit no-arg primary constructor on `FlutterQiblahPlugin`
+
 ## 4.0.0
 
 - **Package renamed** to [`flutter_qiblah_advanced`](https://pub.dev/packages/flutter_qiblah_advanced) for independent publication on pub.dev
